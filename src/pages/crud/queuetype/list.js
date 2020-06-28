@@ -141,7 +141,6 @@ class ListQueueType extends Component {
             caller={this}
           />
         </PagerContainer>
-        )}
       </PageContainer>
     );
   }
