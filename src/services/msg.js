@@ -45,8 +45,9 @@ export class ShowMessage extends Component {
     return this.state.aMessages.map(
       (msg, index) =>
         msg !== '' && (
-          <div>
+          <div key={index}>
             <Alert
+              key={index}
               variant="danger"
               fade="false"
               onClose={() => {

@@ -19,13 +19,11 @@ class Login extends Component {
 
   handleLogin = async e => {
     e.preventDefault();
-    console.log('LOGIN');
     const { email, password } = this.state;
     if (!email || !password) {
       this.setState({ error: 'Preencha e-mail e senha para continuar!' });
     } else {
       try {
-        console.log('await LOGIN');
         const response = await api.post('/login', { email, password });
         login(response.data);
         if (this.props.location.state) {

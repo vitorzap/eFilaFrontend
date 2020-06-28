@@ -25,13 +25,11 @@ class Startqueues extends Component {
 
   handleStartQueues = e => {
     e.preventDefault();
-    console.log('StartQueues');
     this.startQueues();
     this.setState({ show: false });
   };
 
   async startQueues() {
-    console.log('startQueues <====================================');
     let msgErro = '';
     try {
       await api.post('opqueues');

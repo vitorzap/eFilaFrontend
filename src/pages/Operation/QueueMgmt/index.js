@@ -42,7 +42,6 @@ class QueueMgmt extends Component {
   componentDidMount() {
     this.registerToSocket();
     this.getQueuesAndPositions();
-    console.log('componentDidMount');
     const intervalId = setInterval(() => {
       this.setState({
         waits: this.state.positions.map(position =>
@@ -54,20 +53,7 @@ class QueueMgmt extends Component {
   }
 
   componentWillUnmount() {
-    console.log('componentWillUnmount');
     clearInterval(this.state.intervalId);
-  }
-
-  refreshWait() {
-    alert('Alo');
-    // console.log('ENTROU => RefreshWait');
-    // let wPositions = this.state.positions;
-    // console.log('wPositions', wPositions);
-    // const wFmtWaits = wPositions.map(position =>
-    //   milisegToHourSeg(Date.now() - position.arrived_at)
-    // );
-    // this.setState({ waits: wFmtWaits });
-    // console.log('SAIU => RefreshWait');
   }
 
   registerToSocket = () => {
@@ -132,13 +118,10 @@ class QueueMgmt extends Component {
   };
 
   async getQueuesAndPositions() {
-    console.log('getQueuesAndPositions');
     let msgErro = '';
     try {
-      console.log('VAI PEGAR');
       const responseQ = await api.get('opqueues');
       let queues = responseQ.data;
-      console.log('QUEUES', queues);
       if (queues.length > 0) {
         for (let i = 0; i < queues.length; i = i + 1) {
           queues[i].fmtWait = milisegToHourSeg(queues[i].wait);

@@ -32,7 +32,6 @@ class Dequeue extends Component {
 
   handleDequeue = e => {
     e.preventDefault();
-    console.log('Dequeue');
     this.deQueue(this.props.queue, this.props.caller);
     this.setState({ show: false });
   };
@@ -41,16 +40,13 @@ class Dequeue extends Component {
     try {
       await api.delete(`/oppositions/${queue._id}`);
     } catch (err) {
-      console.log(err.message);
       if (err.response) {
         const { error: msgErro } = err.response.data;
         this.setState({ error: msgErro });
       } else {
         this.setState({ error: err.message });
-        console.log('ERRO ==>', err.message);
       }
     }
-    console.log('Saindo do Apagando');
   }
 
   render() {

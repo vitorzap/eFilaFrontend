@@ -69,6 +69,8 @@ class CreateQueue extends Component {
   handleCreate = async e => {
     e.preventDefault();
 
+    console.log('handleCreate');
+
     const schema = Yup.object().shape({
       description: Yup.string().required('Descrição deve ser preenchida'),
       company_id: Yup.number().moreThan(0, 'Não foi selecionada uma empresa'),
@@ -78,6 +80,7 @@ class CreateQueue extends Component {
       )
     });
     let oThis = this;
+    console.log('===> this.state', this.state);
     const {
       description,
       companyId: company_id,
@@ -87,6 +90,7 @@ class CreateQueue extends Component {
       .validate({ description, company_id, queue_type_id })
       .then(async valid => {
         try {
+          console.log('===> valid', valid);
           await api.post('/queues', valid);
           setMessage('Fila criado com sucesso');
           this.props.history.push('/queues');

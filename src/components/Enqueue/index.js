@@ -64,7 +64,6 @@ class EnQueue extends Component {
             this.setState({ error: msgErro });
           } else {
             this.setState({ error: err1.message });
-            console.log('ERRO ==>', err1.message);
           }
         }
       })

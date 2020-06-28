@@ -45,10 +45,6 @@ class ListCompany extends Component {
       this.state.totalPages,
       crudConstants.NEIGHBORHOOD
     );
-    console.log(
-      'tamanho',
-      this.state.items ? this.state.items.length : 'INDEFINIDO'
-    );
     return (
       <PageContainer fluid={true}>
         <MsgArea totalItems={this.state.totalItems} error={this.state.error} />
