@@ -52,6 +52,7 @@ class CreateQueue extends Component {
   }
 
   async getQueueTypes(companyId) {
+    console.log('CompanyId', companyId);
     try {
       const response = await api.get(`listqueuetypes?companyid=${companyId}`);
       const items = response.data;

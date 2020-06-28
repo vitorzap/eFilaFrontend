@@ -59,8 +59,8 @@ async function getPageSetState(apiAction, page, sortField, caller) {
     const response = await api.get(
       `${apiAction}?page=${page.toString()}${sortParam}`
     );
+
     const { count, rows, perpage } = response.data;
-    console.log('rows', rows);
     const totalPages = Math.ceil(count / perpage);
 
     newState.currentPage = page;
@@ -82,7 +82,6 @@ async function getPageSetState(apiAction, page, sortField, caller) {
     }
     newState.error = msgErro;
   }
-  console.log('newState', newState);
   caller.setState(newState);
 }
 
